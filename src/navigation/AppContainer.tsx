@@ -2,8 +2,7 @@ import React from "react";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { screenMap } from "./screenMap";
-import { EnterMobileScreen, RootScreen, VerifyOtpScreen } from "../screens";
-import AppBottomTabBar from "../screens/Home/AppBottomTabBar";
+import { EnterMobileScreen, RootScreen, VerifyOtpScreen, AppBottomTabBar } from "../screens";
 
 function AppContainer(): JSX.Element {
   const Stack = createNativeStackNavigator();

@@ -26,7 +26,7 @@ const Product = (props: ProductProps) => {
       />
       </View>
       
-      <Text style={[text.subtitle, {paddingHorizontal: 10}]}>{props.data.title}</Text>
+      <Text numberOfLines={1} style={[text.subtitle, {paddingHorizontal: 10}]}>{props.data.title}</Text>
       <View style={styles.priceContainer}>
         <Text style={[text.price, { marginRight: 5}]}>
           ₹{props.data.discountedPrice}

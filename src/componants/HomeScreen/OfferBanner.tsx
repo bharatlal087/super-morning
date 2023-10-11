@@ -63,6 +63,7 @@ const OfferBanner = (props: BannerProps) => {
         showsHorizontalScrollIndicator={false}
         style={styles.scrollView}
         onScroll={handleScroll}
+        bounces={false}
         scrollEventThrottle={16} // Adjust the scroll event throttle as needed
       >
         {pages.map((item, index) => (

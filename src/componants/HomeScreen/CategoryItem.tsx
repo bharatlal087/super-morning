@@ -12,7 +12,7 @@ export interface CategoryItemProps {
 const CategoryItem = (props: CategoryItemProps) => {
   const {id, name, icon} = props;
   return (
-    <View style={{margin: 3}}>
+    <View key={id} style={{margin: 3}}>
       <View style={styles.container}>
         <Image resizeMode='contain' style={styles.image} source={{uri: icon}} />
       </View>
@@ -37,5 +37,7 @@ const styles = StyleSheet.create({
     height: 60,
     width: 60,
     alignItems: 'center',
+    borderRadius: 8,
+    overflow: 'hidden'
   }
 });

@@ -18,7 +18,7 @@ export const text = StyleSheet.create({
     color: Color.solidBlack,
   },
   discount: {
-    fontSize: 9,
+    fontSize: 10,
     fontWeight: '400',
     color: Color.solidGrey,
     textDecorationLine: 'line-through'
