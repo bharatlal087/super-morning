@@ -10,7 +10,10 @@ import {
 import React, {Fragment} from 'react';
 import {NavigationBar, OfferBanner, AddToCartButton} from '../../componants';
 import {useRoute} from '@react-navigation/native';
-import {ProductData, ProductDetails} from '../../componants/HomeScreen/ProductCellHome';
+import {
+  ProductData,
+  ProductDetails,
+} from '../../componants/HomeScreen/ProductCellHome';
 import {text} from '../../constants/AppStyle';
 import {Color} from '../../constants/Colors';
 
@@ -35,8 +38,8 @@ const ProductDetailScreen = () => {
             <OfferBanner items={bannerImages} />
           </View>
           <ProductInfo {...product} />
-          <View style={{height: 34}}>
-            <AddToCartButton />
+          <View style={{height: 34, marginLeft: 16, width: 146}}>
+            <AddToCartButton title="ADD TO CART" />
           </View>
           {product.productDetails.map((item, index) => {
             return <Details key={`${index}`} {...item} />;
@@ -67,7 +70,7 @@ const Details = ({title, messages, isBullet}: ProductDetails) => {
         {messages.map(item => {
           return (
             <View
-            key={item}
+              key={item}
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',

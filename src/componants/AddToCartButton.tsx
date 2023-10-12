@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {Color} from '../constants/Colors';
 import {text} from '../constants/AppStyle';
 
-const AddToCartButton = () => {
+const AddToCartButton = (props: {title: string}) => {
   const maxLimit: number = 10;
   const [count, setCount] = useState(0);
 
@@ -33,7 +33,7 @@ const AddToCartButton = () => {
           onPress={() => {
             updateCounterValueBy(1);
           }}>
-          <Text style={styles.addToCart}>+ ADD TO CART</Text>
+          <Text style={styles.addToCart}>+ {props.title}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -70,8 +70,6 @@ const ItemCounter = (props: CartCountHandler) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    width: 146,
-    marginLeft: 16,
     borderColor: Color.solidGreen,
     borderWidth: 1,
     borderRadius: 4,

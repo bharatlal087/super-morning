@@ -4,6 +4,7 @@ import {ProductData} from '../HomeScreen/ProductCellHome';
 import {Color} from '../../constants/Colors';
 import {text} from '../../constants/AppStyle';
 import AddCartSmallButton from '../AddCartSmallButton';
+import AddToCartButton from '../AddToCartButton';
 type Props = {
   item: ProductData;
 };
@@ -16,7 +17,9 @@ const ProductCell = (props: Props) => {
         <Text style={[text.subtitle, {marginBottom: 4}]}>{name}</Text>
         <Text style={[text.grey10400, {marginBottom: 10}]}>{quantity}</Text>
         <View style={{flexDirection: 'row'}}>
-          <AddCartSmallButton />
+          <View style={{height: 24, width: 82, marginRight: 10}}>
+            <AddToCartButton title="ADD" />
+          </View>
           <SubscribeButton />
         </View>
       </View>
