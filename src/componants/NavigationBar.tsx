@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { text } from "../constants/AppStyle";
 
 function NavigationBar(props: { title: string }): JSX.Element {
     const navigation = useNavigation();
@@ -15,7 +16,7 @@ function NavigationBar(props: { title: string }): JSX.Element {
                     </View>
                 </TouchableOpacity>
             </View>
-            <View style={styles.title}><Text style={{ fontSize: 16, fontWeight: '700' }}>{props.title}</Text></View>
+            <View style={styles.title}><Text style={text.title} numberOfLines={1}>{props.title}</Text></View>
             <View style={styles.right}><Text></Text></View>
         </View>
     );

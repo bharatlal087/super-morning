@@ -8,10 +8,11 @@ interface ProductListProps {
         title: string;
         products: ProductData[];
     }
+    onTap: (item: ProductData) => void
 }
 const ProductList = (props: ProductListProps) => {
   const renderItem = ({item}: any) => {
-    return <Product data={item} />;
+    return <Product data={item} onTap={props.onTap} />;
   };
   
   return (

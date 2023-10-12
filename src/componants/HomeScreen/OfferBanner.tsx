@@ -3,7 +3,6 @@ import {
   View,
   ScrollView,
   StyleSheet,
-  Text,
   Dimensions,
   Image,
   ActivityIndicator,
@@ -110,9 +109,6 @@ const styles = StyleSheet.create({
     height: 260,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  text: {
-    fontSize: 20,
   },
   pageIndicatorContainer: {
     flexDirection: 'row',

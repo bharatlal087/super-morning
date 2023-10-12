@@ -6,12 +6,13 @@ const HomeController = () => {
     const navigation = useNavigation();
     const { dashboardItems } = HomeViewModel();
 
-    // const gotoVerifyOTP = (mobile, token) => {
-    //     navigation.navigate(screenMap.VerifyOTP, { mobile: mobile, token: token })
-    // }
+    const gotoProductDetails = (product) => {
+        navigation.navigate(screenMap.ProductDetails, {product: product})
+    }
 
     return {
-        dashboardItems
+        dashboardItems,
+        gotoProductDetails
     }
 }
 

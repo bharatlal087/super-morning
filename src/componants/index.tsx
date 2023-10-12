@@ -8,4 +8,5 @@ export {default as Product} from './HomeScreen/Product'
 export {default as ProductList} from './HomeScreen/ProductList'
 export {default as SearchBar } from './SearchBar'
 export {default as HomeNavigationBar} from './HomeNavigationBar'
+export {default as AddToCartButton} from './AddToCartButton'
 
