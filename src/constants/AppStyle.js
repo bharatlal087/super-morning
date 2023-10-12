@@ -9,7 +9,7 @@ export const text = StyleSheet.create({
   },
   subtitle: {
     fontSize: 12,
-    fontWeight: '400',
+    fontWeight: '500',
     color: Color.solidBlack,
   },
   price: {
@@ -22,5 +22,10 @@ export const text = StyleSheet.create({
     fontWeight: '400',
     color: Color.solidGrey,
     textDecorationLine: 'line-through'
+  },
+  grey10400: {
+    fontSize: 10,
+    fontWeight: '400',
+    color: Color.solidGrey
   }
 });

@@ -1,46 +1,55 @@
 import { configuration } from "../../constants/configuration";
+import StorageClient from "../storage/StorageClient";
+const isAPILoggerEnable = true
 
-export const postService = async (endPoint: string, body: { [key: string]: any }) => {
+const apiLogger = (url: string, json: any) => {
+    if (isAPILoggerEnable) {
+        console.log('******** API Completed ***********')
+        console.log('URL: POST ' + url)
+        console.log('Response: ', json)
+        console.log('**********************************')
+    }
+}
+
+const apiClient = async (method: string, endPoint: string, body?: { [key: string]: any }) => {
     try {
+        const { SCGetString } = StorageClient();
+        const token = await SCGetString('accessToken');
+        let headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'apikey': configuration.apiKey,
+            'Authorization': token ? `Bearer ${token}` : ''
+        }
+
         let url = configuration.baseUrl + endPoint
         let response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-                'apikey': configuration.apiKey
-            },
-            body: JSON.stringify(body)
+            method: method,
+            headers: headers,
+            body: body ? JSON.stringify(body) : null
         });
         let json = await response.json();
-        if (json.status == true) {
-            return json;
-        } else {
-            return {error: json.message};
-        }        
+        apiLogger(url, json)
+        return json;
     } catch (error) {
         return {error: ("" + error).replace('TypeError: ', '')}
     }
 }
 
-export const getService = async (endPoint: string) => {
-    try {
-        let url = configuration.baseUrl + endPoint
-        let response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-                'apikey': configuration.apiKey
-            }
-        });
-        let json = await response.json();
-        if (json.status == true) {
-            return json;
-        } else {
-            return {error: json.message};
-        }        
-    } catch (error) {
-        return {error: ("" + error).replace('TypeError: ', '')}
+export const postService = async (endPoint: string, body: { [key: string]: any }) => {
+    let json = await apiClient('POST', endPoint, body)
+    if (json.status == true) {
+        return json;
+    } else {
+        return {error: json.message};
     }
+}
+
+export const getService = async (endPoint: string) => {
+    let json = await apiClient('GET', endPoint)
+    if (json.status == true) {
+        return json;
+    } else {
+        return {error: json.message};
+    } 
 }

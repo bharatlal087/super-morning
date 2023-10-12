@@ -9,13 +9,12 @@ const RootScreen = () => {
     const { SCGetString } = StorageClient();
 
     const loadRootScreen = async () => {
-        navigation.navigate(screenMap.Home)
-        // const token = await SCGetString('accessToken');
-        // if (token) {
-        //     navigation.navigate(screenMap.Home)
-        // } else {
-        //     navigation.navigate(screenMap.EnterMobile)
-        // }
+        const token = await SCGetString('accessToken');
+        if (token) {
+            navigation.navigate(screenMap.Home)
+        } else {
+            navigation.navigate(screenMap.EnterMobile)
+        }
     }
 
     useEffect(() => {

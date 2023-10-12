@@ -3,5 +3,6 @@ export const screenMap = {
     EnterMobile: 'Enter Mobile',
     VerifyOTP: 'Verify OTP',
     Home: 'Dashoard',
-    ProductDetails: 'ProductDetails'
+    ProductDetails: 'ProductDetails',
+    ProductListScreen: 'ProductListScreen'
 };

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, Text, View} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-
 import HomeController from './HomeController';
 import {
   CategoryList,
@@ -11,11 +10,11 @@ import {
   HomeNavigationBar,
 } from '../../componants';
 import {Color} from '../../constants/Colors';
-import { ProductData } from '../../componants/HomeScreen/Product';
+import {ProductData} from '../../componants/HomeScreen/ProductCellHome';
 
 function HomeScreen(): JSX.Element {
   const [list, setList] = useState([]);
-  const {dashboardItems, gotoProductDetails} = HomeController();
+  const {dashboardItems, gotoProductDetails, gotoCategory} = HomeController();
   const insets = useSafeAreaInsets();
 
   const getDashboardData = async () => {
@@ -41,7 +40,7 @@ function HomeScreen(): JSX.Element {
     if (item.name === 'Search') {
       return <SearchBar placeholderText="Search for an item" />;
     } else if (item.name === 'TopCategory') {
-      return <CategoryList categories={item.items} />;
+      return <CategoryList categories={item.items} onTap={onCategoryTap} />;
     } else if (item.name === 'Banner') {
       return <OfferBanner items={item.items} />;
     } else if (item.name === 'Products') {
@@ -58,10 +57,12 @@ function HomeScreen(): JSX.Element {
     return <Text></Text>;
   };
 
-  const onProductTap = ((item: ProductData) => {
-    gotoProductDetails(item)
-  });
-
+  const onProductTap = (item: ProductData) => {
+    gotoProductDetails(item);
+  };
+  const onCategoryTap = (id: string, name: string) => {
+    gotoCategory(id, name);
+  };
   return (
     <View
       style={{

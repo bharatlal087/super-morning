@@ -2,6 +2,7 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {Color} from '../../constants/Colors';
 import {text} from '../../constants/AppStyle';
+import AddCartSmallButton from '../AddCartSmallButton';
 
 interface ProductProps {
   data: ProductData;
@@ -29,7 +30,7 @@ export interface ProductDetails {
   title: string;
 }
 
-const Product = (props: ProductProps) => {
+const ProductCellHome = (props: ProductProps) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => {
@@ -57,13 +58,7 @@ const Product = (props: ProductProps) => {
       </TouchableOpacity>
       {props.data.isAvailable ? (
         <View style={styles.available}>
-          <TouchableOpacity onPress={() => {}} style={styles.addToCart}>
-            <Image
-              source={require('../../../assets/images/cart.png')}
-              style={[styles.buttonImage, {tintColor: Color.solidGreen}]}
-            />
-            <Text style={styles.buttonTitle}>ADD</Text>
-          </TouchableOpacity>
+          <AddCartSmallButton />
           <TouchableOpacity onPress={() => {}} style={styles.calendar}>
             <Image
               source={require('../../../assets/images/calendar.badge.plus.png')}
@@ -78,7 +73,7 @@ const Product = (props: ProductProps) => {
   );
 };
 
-export default Product;
+export default ProductCellHome;
 const styles = StyleSheet.create({
   container: {
     height: 183,
@@ -115,16 +110,17 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   calendar: {
-    flex: 1,
     borderRadius: 4,
     borderColor: Color.solidGreen,
     borderWidth: 1,
-    padding: 4,
+    width: 24,
+    height: 24,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   buttonImage: {
     height: 14,
     width: 14,
-    marginHorizontal: 5,
   },
   buttonTitle: {
     fontSize: 13,

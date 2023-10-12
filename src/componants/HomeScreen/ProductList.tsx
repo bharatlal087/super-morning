@@ -1,6 +1,6 @@
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import Product, {ProductData} from './Product';
+import ProductCellHome, {ProductData} from './ProductCellHome';
 import { text } from '../../constants/AppStyle';
 
 interface ProductListProps {
@@ -12,7 +12,7 @@ interface ProductListProps {
 }
 const ProductList = (props: ProductListProps) => {
   const renderItem = ({item}: any) => {
-    return <Product data={item} onTap={props.onTap} />;
+    return <ProductCellHome data={item} onTap={props.onTap} />;
   };
   
   return (
