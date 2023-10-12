@@ -3,7 +3,6 @@ import React from 'react';
 import {ProductData} from '../HomeScreen/ProductCellHome';
 import {Color} from '../../constants/Colors';
 import {text} from '../../constants/AppStyle';
-import AddCartSmallButton from '../AddCartSmallButton';
 import AddToCartButton from '../AddToCartButton';
 type Props = {
   item: ProductData;

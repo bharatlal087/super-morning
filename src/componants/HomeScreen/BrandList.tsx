@@ -1,14 +1,35 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import {FlatList, StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import {text} from '../../constants/AppStyle';
+import {ProductData} from './ProductCellHome';
+import BrandCell from './BrandCell';
 
-const BrandList = () => {
+type BrandListProps = {
+  title: string;
+  products: ProductData[];
+  onTap: (item: ProductData) => void;
+};
+const BrandList = (props: BrandListProps) => {
+  const renderItem = ({item}: any) => {
+    return (
+      <BrandCell id={item.id} icon={item.icon} onTap={() => {}}/>
+    );
+  };
+
   return (
-    <View>
-      <Text>BrandList</Text>
+    <View style={{margin: 10}}>
+      <Text style={text.title}>{props.title}</Text>
+      <FlatList
+        data={props.products}
+        renderItem={renderItem}
+        keyExtractor={prod => prod.id}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+      />
     </View>
-  )
-}
+  );
+};
 
-export default BrandList
+export default BrandList;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

@@ -8,6 +8,7 @@ import {
   OfferBanner,
   SearchBar,
   HomeNavigationBar,
+  BrandList,
 } from '../../componants';
 import {Color} from '../../constants/Colors';
 import {ProductData} from '../../componants/HomeScreen/ProductCellHome';
@@ -53,7 +54,9 @@ function HomeScreen(): JSX.Element {
           onTap={onProductTap}
         />
       );
-    }
+    } else if (item.name === 'Brands') {
+      return <BrandList title={item.title} products={item.items} onTap={() => {}}/>
+    } 
     return <Text></Text>;
   };
 
