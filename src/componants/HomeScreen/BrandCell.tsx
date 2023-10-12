@@ -6,16 +6,17 @@ import {Color} from '../../constants/Colors';
 type BrandItemProps = {
   id: string;
   icon: string;
-  onTap: (id: string) => void;
+  name: string;
+  onTap: (id: string, name: string) => void;
 };
 
 const BrandCell = (props: BrandItemProps) => {
-  const {id, icon, onTap} = props;
+  const {id, icon, name, onTap} = props;
   return (
     <View key={id} style={{margin: 3}}>
       <TouchableOpacity
         onPress={() => {
-          onTap(id);
+          onTap(id, name);
         }}>
         <View style={styles.container}>
           <Image

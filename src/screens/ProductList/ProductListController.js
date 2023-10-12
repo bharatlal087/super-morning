@@ -4,7 +4,7 @@ import ProductListViewModel from './ProductListViewModel';
 
 const ProductListController = () => {
   const navigation = useNavigation();
-  const {productsBycategoryId} = ProductListViewModel();
+  const {productsBycategoryId, productsByBrandId} = ProductListViewModel();
 
   // const gotoCategory = (id, name) => {
   //     navigation.navigate(screenMap.ProductListScreen, {category: {id, name}})
@@ -12,6 +12,7 @@ const ProductListController = () => {
 
   return {
     productsBycategoryId,
+    productsByBrandId
   };
 };
 

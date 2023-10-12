@@ -9,8 +9,8 @@ const HomeController = () => {
     const gotoProductDetails = (product) => {
         navigation.navigate(screenMap.ProductDetails, {product: product})
     }
-    const gotoCategory = (id, name) => {
-        navigation.navigate(screenMap.ProductListScreen, {category: {id, name}})
+    const gotoCategory = (id, name, isBrand) => {
+        navigation.navigate(screenMap.ProductListScreen, {category: {id, name, isBrand}})
     }
     return {
         dashboardItems,

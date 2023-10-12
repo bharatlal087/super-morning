@@ -7,12 +7,12 @@ import BrandCell from './BrandCell';
 type BrandListProps = {
   title: string;
   products: ProductData[];
-  onTap: (item: ProductData) => void;
+  onTap: (id: string, name: string) => void;
 };
 const BrandList = (props: BrandListProps) => {
   const renderItem = ({item}: any) => {
     return (
-      <BrandCell id={item.id} icon={item.icon} onTap={() => {}}/>
+      <BrandCell id={item.id} icon={item.icon} name={item.name} onTap={props.onTap}/>
     );
   };
 

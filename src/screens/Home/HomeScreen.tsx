@@ -55,8 +55,10 @@ function HomeScreen(): JSX.Element {
         />
       );
     } else if (item.name === 'Brands') {
-      return <BrandList title={item.title} products={item.items} onTap={() => {}}/>
-    } 
+      return (
+        <BrandList title={item.title} products={item.items} onTap={onBrandTap} />
+      );
+    }
     return <Text></Text>;
   };
 
@@ -64,7 +66,10 @@ function HomeScreen(): JSX.Element {
     gotoProductDetails(item);
   };
   const onCategoryTap = (id: string, name: string) => {
-    gotoCategory(id, name);
+    gotoCategory(id, name, false);
+  };
+  const onBrandTap = (id: string, name: string) => {
+    gotoCategory(id, name, true);
   };
   return (
     <View
