@@ -9,10 +9,11 @@ interface ProductListProps {
         products: ProductData[];
     }
     onTap: (item: ProductData) => void
+    onSubscribe: (item: ProductData) => void
 }
 const ProductList = (props: ProductListProps) => {
   const renderItem = ({item}: any) => {
-    return <ProductCellHome data={item} onTap={props.onTap} />;
+    return <ProductCellHome data={item} onTap={props.onTap} onSubscribe={props.onSubscribe} />;
   };
   
   return (

@@ -30,7 +30,7 @@ const BannerImage = (props: BannerImageProps) => {
   return (
     <View style={{justifyContent: 'center', alignItems: 'center'}}>
       <Image
-        source={{uri: props.icon}}
+        source={{uri: props.icon, cache:'force-cache'}}
         style={{width, height: 260}}
         onLoadEnd={() => setIsLoading(false)}
       />

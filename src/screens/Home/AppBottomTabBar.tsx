@@ -3,8 +3,9 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from './HomeScreen';
 import Orders from '../Orders/Orders';
-import Profile from '../Profile/Profile';
+import Profile from '../Profile/ProfileScreen';
 import {Color} from '../../constants/Colors';
+import ProfileScreen from '../Profile/ProfileScreen';
 const Tab = createBottomTabNavigator();
 
 const AppBottomTabBar = () => {
@@ -53,7 +54,7 @@ const AppBottomTabBar = () => {
         }}></Tab.Screen>
       <Tab.Screen
         name="Profile"
-        component={Profile}
+        component={ProfileScreen}
         options={{
           tabBarIcon: ({focused}) => {
             return (

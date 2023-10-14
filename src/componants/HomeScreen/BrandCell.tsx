@@ -22,7 +22,7 @@ const BrandCell = (props: BrandItemProps) => {
           <Image
             resizeMode="contain"
             style={styles.image}
-            source={{uri: icon}}
+            source={{uri: icon, cache:'force-cache'}}
           />
         </View>
       </TouchableOpacity>

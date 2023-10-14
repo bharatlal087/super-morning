@@ -12,10 +12,14 @@ const HomeController = () => {
     const gotoCategory = (id, name, isBrand) => {
         navigation.navigate(screenMap.ProductListScreen, {category: {id, name, isBrand}})
     }
+    const onSubscribe = (product) => {
+        navigation.navigate(screenMap.SubscribeScreen, {product: product})
+    }
     return {
         dashboardItems,
         gotoProductDetails,
-        gotoCategory
+        gotoCategory,
+        onSubscribe
     }
 }
 

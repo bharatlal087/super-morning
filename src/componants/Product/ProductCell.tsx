@@ -11,8 +11,8 @@ const ProductCell = (props: Props) => {
   const {name, price, discountedPrice, quantity, logo} = props.item;
   return (
     <View style={{flexDirection: 'row', backgroundColor: Color.solidWhite}}>
-      <Image style={styles.image} source={{uri: logo}} />
-      <View style={{marginVertical: 10}}>
+      <Image style={styles.image} source={{uri: logo, cache:'force-cache'}} />
+      <View style={{marginVertical: 14}}>
         <Text style={[text.subtitle, {marginBottom: 4}]}>{name}</Text>
         <Text style={[text.grey10400, {marginBottom: 10}]}>{quantity}</Text>
         <View style={{flexDirection: 'row'}}>
@@ -24,8 +24,8 @@ const ProductCell = (props: Props) => {
       </View>
       <View
         style={{marginVertical: 10, justifyContent: 'center', marginLeft: 10}}>
-        <Text style={text.price}>₹{discountedPrice}</Text>
-        <Text style={text.discount}>₹{price}</Text>
+        <Text style={[text.price, {textAlign: 'right'}]}>₹{discountedPrice}</Text>
+        <Text style={[text.discount, {textAlign: 'right'}]}>₹{price}</Text>
       </View>
       <View
         style={{marginVertical: 10, justifyContent: 'center', marginLeft: 10}}>

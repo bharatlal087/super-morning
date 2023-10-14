@@ -5,3 +5,4 @@ export {default as HomeScreen} from './Home/HomeScreen';
 export {default as AppBottomTabBar} from './Home/AppBottomTabBar';
 export {default as ProductDetailScreen} from './ProductDetails/ProductDetailScreen'
 export {default as ProductListScreen} from './ProductList/ProductListScreen'
+export {default as SubscribeScreen} from './Subscribe/SubscribeScreen'

@@ -1,8 +1,9 @@
 import {FlatList, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useRoute} from '@react-navigation/native';
-import {NavigationBar, ProductCell} from '../../componants';
+import {ItemSeparatorView, NavigationBar, ProductCell} from '../../componants';
 import ProductListController from './ProductListController';
+import { Color } from '../../constants/Colors';
 
 const ProductListScreen = () => {
   const [list, setList] = useState([]);
@@ -41,22 +42,12 @@ const ProductListScreen = () => {
         data={list}
         renderItem={renderItem}
         ItemSeparatorComponent={ItemSeparatorView}
+        ListFooterComponent={ItemSeparatorView}
         keyExtractor={item => item['id'] ?? Math.random()}
-        style={{height: '100%'}}
+        style={{height: '100%', backgroundColor: Color.solidWhite}}
       />
     </SafeAreaView>
   );
 };
 
 export default ProductListScreen;
-const ItemSeparatorView = () => {
-  return <View style={styles.separator} />;
-};
-
-const styles = StyleSheet.create({
-  separator: {
-    height: 0.5,
-    marginHorizontal: 20,
-    backgroundColor: 'rgba(23,183,96,0.20)',
-  },
-});

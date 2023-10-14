@@ -37,7 +37,9 @@ const ProductDetailScreen = () => {
           <View style={{height: 260}}>
             <OfferBanner items={bannerImages} />
           </View>
+          <View style={{marginVertical: 16}}>
           <ProductInfo {...product} />
+          </View>
           <View style={{height: 34, marginLeft: 16, width: 146}}>
             <AddToCartButton title="ADD TO CART" />
           </View>
@@ -102,7 +104,7 @@ const Details = ({title, messages, isBullet}: ProductDetails) => {
   }
 };
 
-const ProductInfo = ({
+export const ProductInfo = ({
   name,
   discountedPrice,
   price,
@@ -110,7 +112,7 @@ const ProductInfo = ({
   discountedPercentage,
 }: ProductData) => {
   return (
-    <View style={{marginVertical: 16, marginHorizontal: 12}}>
+    <View style={{marginHorizontal: 12}}>
       <Text style={text.title}>{name}</Text>
       <View style={styles.priceContainer}>
         <Text style={{fontSize: 20, fontWeight: '700', marginRight: 5}}>
@@ -138,8 +140,8 @@ const styles = StyleSheet.create({
   priceContainer: {
     flex: 1,
     flexDirection: 'row',
-    paddingVertical: 8,
-    alignItems: 'center',
+    paddingVertical: 4,
+    alignItems: 'baseline',
   },
   saving: {
     fontSize: 14,

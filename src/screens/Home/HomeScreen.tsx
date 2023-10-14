@@ -15,7 +15,7 @@ import {ProductData} from '../../componants/HomeScreen/ProductCellHome';
 
 function HomeScreen(): JSX.Element {
   const [list, setList] = useState([]);
-  const {dashboardItems, gotoProductDetails, gotoCategory} = HomeController();
+  const {dashboardItems, gotoProductDetails, gotoCategory, onSubscribe} = HomeController();
   const insets = useSafeAreaInsets();
 
   const getDashboardData = async () => {
@@ -52,6 +52,7 @@ function HomeScreen(): JSX.Element {
             products: item.products,
           }}
           onTap={onProductTap}
+          onSubscribe={onSubscribeTap}
         />
       );
     } else if (item.name === 'Brands') {
@@ -70,6 +71,9 @@ function HomeScreen(): JSX.Element {
   };
   const onBrandTap = (id: string, name: string) => {
     gotoCategory(id, name, true);
+  };
+  const onSubscribeTap = (item: ProductData) => {
+    onSubscribe(item)
   };
   return (
     <View

@@ -47,7 +47,7 @@ type CartCountHandler = {
   onIncrease: () => void;
   onDecrease: () => void;
 };
-const ItemCounter = (props: CartCountHandler) => {
+export const ItemCounter = (props: CartCountHandler) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity

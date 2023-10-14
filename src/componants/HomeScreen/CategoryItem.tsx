@@ -22,7 +22,7 @@ const CategoryItem = (props: CategoryItemProps) => {
           <Image
             resizeMode="contain"
             style={styles.image}
-            source={{uri: icon}}
+            source={{uri: icon, cache:'force-cache'}}
           />
         </View>
         <Text style={[text.subtitle, {textAlign: 'center'}]}>{name}</Text>

@@ -4,5 +4,6 @@ export const screenMap = {
     VerifyOTP: 'Verify OTP',
     Home: 'Dashoard',
     ProductDetails: 'ProductDetails',
-    ProductListScreen: 'ProductListScreen'
+    ProductListScreen: 'ProductListScreen',
+    SubscribeScreen: 'SubscribeScreen'
 };

@@ -7,6 +7,7 @@ import AddCartSmallButton from '../AddCartSmallButton';
 interface ProductProps {
   data: ProductData;
   onTap: (item: ProductData) => void
+  onSubscribe: (item: ProductData) => void
 }
 
 export interface ProductData {
@@ -40,7 +41,7 @@ const ProductCellHome = (props: ProductProps) => {
           <Image
             style={styles.image}
             resizeMode="cover"
-            source={{uri: props.data.logo}}
+            source={{uri: props.data.logo, cache:'force-cache'}}
           />
         </View>
 
@@ -59,7 +60,7 @@ const ProductCellHome = (props: ProductProps) => {
       {props.data.isAvailable ? (
         <View style={styles.available}>
           <AddCartSmallButton />
-          <TouchableOpacity onPress={() => {}} style={styles.calendar}>
+          <TouchableOpacity onPress={() => {props.onSubscribe(props.data)}} style={styles.calendar}>
             <Image
               source={require('../../../assets/images/calendar.badge.plus.png')}
               style={styles.buttonImage}
