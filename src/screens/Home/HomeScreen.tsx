@@ -15,7 +15,7 @@ import {ProductData} from '../../componants/HomeScreen/ProductCellHome';
 
 function HomeScreen(): JSX.Element {
   const [list, setList] = useState([]);
-  const {dashboardItems, gotoProductDetails, gotoCategory, onSubscribe} = HomeController();
+  const {dashboardItems, gotoProductDetails, gotoCategory, onSubscribe, onReviewCart} = HomeController();
   const insets = useSafeAreaInsets();
 
   const getDashboardData = async () => {
@@ -75,6 +75,9 @@ function HomeScreen(): JSX.Element {
   const onSubscribeTap = (item: ProductData) => {
     onSubscribe(item)
   };
+  const onCartTap = () => {
+    onReviewCart()
+  };
   return (
     <View
       style={{
@@ -82,7 +85,7 @@ function HomeScreen(): JSX.Element {
         paddingTop: insets.top,
         backgroundColor: Color.solidWhite,
       }}>
-      <HomeNavigationBar />
+      <HomeNavigationBar onCartTap={onCartTap}/>
       <FlatList
         showsVerticalScrollIndicator={false}
         data={list}

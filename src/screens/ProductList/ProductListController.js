@@ -10,9 +10,14 @@ const ProductListController = () => {
   //     navigation.navigate(screenMap.ProductListScreen, {category: {id, name}})
   // }
 
+  const onSubscribe = product => {
+    navigation.navigate(screenMap.SubscribeScreen, {product: product});
+  };
+
   return {
     productsBycategoryId,
-    productsByBrandId
+    productsByBrandId,
+    onSubscribe
   };
 };
 

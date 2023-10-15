@@ -16,16 +16,22 @@ import {
 } from '../../componants/HomeScreen/ProductCellHome';
 import {text} from '../../constants/AppStyle';
 import {Color} from '../../constants/Colors';
+import ProductDetailsController from './ProductDetailsController';
 
 const ProductDetailScreen = () => {
   const route = useRoute();
   const {product} = route.params as {product: ProductData};
+  const {onSubscribe} = ProductDetailsController();
   const bannerImages = product.bannerImages.map((item, index) => {
     return {
       id: `${index}`,
       icon: item,
     };
   }) as [{id: string; icon: string}];
+
+  const onSubscribeTap = (product: ProductData) => {
+    onSubscribe(product);
+  };
 
   return (
     <Fragment>
@@ -38,7 +44,7 @@ const ProductDetailScreen = () => {
             <OfferBanner items={bannerImages} />
           </View>
           <View style={{marginVertical: 16}}>
-          <ProductInfo {...product} />
+            <ProductInfo {...product} />
           </View>
           <View style={{height: 34, marginLeft: 16, width: 146}}>
             <AddToCartButton title="ADD TO CART" />
@@ -48,7 +54,7 @@ const ProductDetailScreen = () => {
           })}
           <View style={{height: 10}}></View>
         </ScrollView>
-        <TouchableOpacity style={styles.subsButton}>
+        <TouchableOpacity style={styles.subsButton} onPress={() => {onSubscribeTap(product)}}>
           <View style={{flexDirection: 'row'}}>
             <Image
               style={styles.subsImage}

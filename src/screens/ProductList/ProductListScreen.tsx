@@ -4,12 +4,13 @@ import {useRoute} from '@react-navigation/native';
 import {ItemSeparatorView, NavigationBar, ProductCell} from '../../componants';
 import ProductListController from './ProductListController';
 import { Color } from '../../constants/Colors';
+import { ProductData } from '../../componants/HomeScreen/ProductCellHome';
 
 const ProductListScreen = () => {
   const [list, setList] = useState([]);
   const route = useRoute();
   const {category} = route.params as {category: {id: string; name: string, isBrand: boolean}};
-  const {productsBycategoryId, productsByBrandId} = ProductListController();
+  const {productsBycategoryId, productsByBrandId, onSubscribe} = ProductListController();
 
   const getProductsByCategoryId = async (id: string) => {
     const result = await productsBycategoryId(id);
@@ -32,8 +33,11 @@ const ProductListScreen = () => {
         getProductsByCategoryId(category.id);
     }
   }, []);
+  const onSubscribeTap = (item: ProductData) => {
+    onSubscribe(item)
+  }
   const renderItem = ({item}: any) => {
-    return <ProductCell item={item} />;
+    return <ProductCell item={item} onSubscribe={(data) => {onSubscribeTap(data)}}/>;
   };
   return (
     <SafeAreaView>

@@ -15,11 +15,15 @@ const HomeController = () => {
     const onSubscribe = (product) => {
         navigation.navigate(screenMap.SubscribeScreen, {product: product})
     }
+    const onReviewCart = () => {
+        navigation.navigate(screenMap.ReviewCartScreen)
+    }
     return {
         dashboardItems,
         gotoProductDetails,
         gotoCategory,
-        onSubscribe
+        onSubscribe,
+        onReviewCart
     }
 }
 

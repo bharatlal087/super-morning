@@ -5,5 +5,6 @@ export const screenMap = {
     Home: 'Dashoard',
     ProductDetails: 'ProductDetails',
     ProductListScreen: 'ProductListScreen',
-    SubscribeScreen: 'SubscribeScreen'
+    SubscribeScreen: 'SubscribeScreen',
+    ReviewCartScreen: 'ReviewCartScreen'
 };

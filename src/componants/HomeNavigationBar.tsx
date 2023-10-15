@@ -4,7 +4,7 @@ import { Color } from '../constants/Colors';
 import { text } from '../constants/AppStyle';
 
 
-const HomeNavigationBar = () => {
+const HomeNavigationBar = (props: {onCartTap: () => void}) => {
     return (
         <View>
             <View style={styles.headerView}>
@@ -21,7 +21,7 @@ const HomeNavigationBar = () => {
                     <Text style={text.subtitle}>Gurgaon, Haryana - 122001</Text>
                 </View>
                 <View style={styles.cardView}>
-                    <TouchableOpacity style={styles.buttonWrapper}>
+                    <TouchableOpacity style={styles.buttonWrapper} onPress={props.onCartTap}>
                         <Image
                             source={require('../../assets/images/cart.png')}
                             style={styles.buttonImage}

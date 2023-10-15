@@ -8,32 +8,29 @@ import {
   View,
 } from 'react-native';
 import React, {Fragment, useState} from 'react';
-import {useRoute} from '@react-navigation/native';
-import {ProductData} from '../../componants/HomeScreen/ProductCellHome';
+
 import {
   ApplyCouponView,
-  ForwardArrow,
   NavigationBar,
   PaymentDetailsView,
+  ProductIncartCell,
 } from '../../componants';
 import {Color} from '../../constants/Colors';
-import {text} from '../../constants/AppStyle';
-import {ProductInfo} from '../ProductDetails/ProductDetailScreen';
 import {ItemCounter} from '../../componants/AddToCartButton';
+import { text } from '../../constants/AppStyle';
 
-const SubscribeScreen = () => {
-  const route = useRoute();
-  const {product} = route.params as {product: ProductData};
+const ReviewCartScreen = () => {
+  // const route = useRoute();
+  // const {product} = route.params as {product: ProductData};
   return (
     <Fragment>
       <SafeAreaView style={{flex: 0, backgroundColor: Color.solidWhite}}>
-        <NavigationBar title="Subscribe" />
+        <NavigationBar title="Review Cart" />
       </SafeAreaView>
       <SafeAreaView style={{flex: 1, backgroundColor: Color.solidGreen}}>
         <ScrollView style={{backgroundColor: Color.solidWhite}}>
-          <ProductView product={product} />
-          <PriceChangeInfoView />
-          <BuildSubscriptionView />
+          <DeliveryInfoView />
+          <CartDetailView />
           <ApplyCouponView />
           <PaymentDetailsView />
           <TotalAmpontView amount={56.0} />
@@ -56,8 +53,27 @@ const SubscribeScreen = () => {
   );
 };
 
-export default SubscribeScreen;
+export default ReviewCartScreen;
 
+const DeliveryInfoView = () => {
+  return (
+    <View style={[styles.deliveryInfo, styles.shadow]}>
+      <Text style={styles.deliveryTitle}>Delivery by morning 29 July 2023</Text>
+      <Text style={styles.deliverySubtitle}>
+        Your address not verified, we will deliver your order after successfully
+        verify.
+      </Text>
+    </View>
+  );
+};
+const CartDetailView = () => {
+  return (
+    <View style={{marginLeft: 12}}>
+      <Text style={[text.title, {marginBottom: 8}]}>3 Items in your cart</Text>
+      {/* <ProductIncartCell /> */}
+    </View>
+  );
+};
 const TotalAmpontView = (props: {amount: number}) => {
   return (
     <View style={[styles.titleRow, {alignItems: 'center', marginLeft: 12}]}>
@@ -72,23 +88,6 @@ const TotalSavingView = (props: {saving: number}) => {
       <Text style={styles.savingText}>
         You saved ₹{props.saving} on this order
       </Text>
-    </View>
-  );
-};
-
-const BuildSubscriptionView = () => {
-  return (
-    <View style={{marginLeft: 12}}>
-      <Text style={[text.title, {marginBottom: 8}]}>
-        Build your subscription
-      </Text>
-      <CounterView title="Total deliveries" value={1} />
-      <CounterView title="Quantity per delivery" value={1} />
-      <SubscriptionIntervalView title="Start Date" buttonTitle="28/07/2023" />
-      <SubscriptionIntervalView
-        title="Delivery Intervals"
-        buttonTitle="Daily"
-      />
     </View>
   );
 };
@@ -128,77 +127,33 @@ const ItemCounterButton = () => {
     />
   );
 };
-const SubscriptionIntervalView = (props: {
-  title: string;
-  buttonTitle: string;
-}) => {
-  return (
-    <View style={styles.titleRow}>
-      <Text style={styles.title}>{props.title}</Text>
-      <View style={[styles.counterContainer, {flexDirection: 'row'}]}>
-        <TouchableOpacity>
-          <Text style={styles.date}>{props.buttonTitle}</Text>
-        </TouchableOpacity>
-        <View style={{justifyContent: 'center', marginLeft: 5}}>
-          <ForwardArrow />
-        </View>
-      </View>
-    </View>
-  );
-};
-const ProductView = (props: {product: ProductData}) => {
-  const {product} = props;
-  console.log(product);
-  return (
-    <View style={styles.productContainer}>
-      <Image
-        source={{uri: product.logo, cache: 'force-cache'}}
-        style={styles.productImage}
-      />
-      <View style={{marginVertical: 8}}>
-        <ProductInfo {...product} />
-      </View>
-    </View>
-  );
-};
-
-const PriceChangeInfoView = () => {
-  return (
-    <Text style={styles.info}>
-      Note: Price of products on subscription may change as per market changes.
-    </Text>
-  );
-};
-
 const styles = StyleSheet.create({
-  date: {
-    fontSize: 14,
-    fontWeight: '500',
-    color: Color.solidGreen,
-    textAlign: 'right',
-    paddingTop: 4,
-  },
-  productContainer: {
-    backgroundColor: `${Color.solidGreen}40`,
-    flexDirection: 'row',
-    borderBottomColor: `${Color.solidGreen}40`,
-    borderBottomWidth: 1,
-    borderTopColor: `${Color.solidGreen}40`,
-    borderTopWidth: 1,
-  },
-  productImage: {height: 60, width: 60, marginHorizontal: 12, marginTop: 8},
-  info: {
-    marginVertical: 16,
+  deliveryInfo: {
     marginHorizontal: 12,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    backgroundColor: 'rgba(255, 177, 0, 0.05)',
-    borderColor: 'rgba(255, 177, 0, 0.20)',
-    borderRadius: 8,
+    marginVertical: 16,
+    padding: 4,
+    borderColor: Color.solidGreen,
     borderWidth: 1,
-    color: '#FFB100',
-    fontSize: 12,
+    borderRadius: 8,
+  },
+  deliveryTitle: {
+    marginHorizontal: 12,
+    marginBottom: 3,
+    fontSize: 16,
+    fontWeight: '500',
+    color: Color.solidBlack,
+  },
+  shadow: {
+    shadowColor: '#000000',
+    shadowOffset: {width: 0, height: 2}, // change this for more shadow
+    shadowOpacity: 0.4,
+    shadowRadius: 6,
+  },
+  deliverySubtitle: {
+    marginHorizontal: 12,
+    fontSize: 14,
     fontWeight: '400',
+    color: Color.solidGrey,
   },
   title: {
     fontSize: 14,

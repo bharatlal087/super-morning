@@ -2,7 +2,7 @@ import React from "react";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { screenMap } from "./screenMap";
-import { EnterMobileScreen, RootScreen, VerifyOtpScreen, AppBottomTabBar, ProductListScreen, SubscribeScreen } from "../screens";
+import { EnterMobileScreen, RootScreen, VerifyOtpScreen, AppBottomTabBar, ProductListScreen, SubscribeScreen, ReviewCartScreen } from "../screens";
 import ProductDetailScreen from "../screens/ProductDetails/ProductDetailScreen";
 
 function AppContainer(): JSX.Element {
@@ -41,6 +41,10 @@ function AppContainer(): JSX.Element {
         />
         <Stack.Screen name={screenMap.SubscribeScreen}
         component={SubscribeScreen}
+        options={{ headerShown: false, gestureEnabled: false }}
+        />
+        <Stack.Screen name={screenMap.ReviewCartScreen}
+        component={ReviewCartScreen}
         options={{ headerShown: false, gestureEnabled: false }}
         />
       </Stack.Navigator>
