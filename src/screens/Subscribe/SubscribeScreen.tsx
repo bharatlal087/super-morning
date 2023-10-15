@@ -15,11 +15,11 @@ import {
   ForwardArrow,
   NavigationBar,
   PaymentDetailsView,
+  ItemCounterButton
 } from '../../componants';
 import {Color} from '../../constants/Colors';
 import {text} from '../../constants/AppStyle';
 import {ProductInfo} from '../ProductDetails/ProductDetailScreen';
-import {ItemCounter} from '../../componants/AddToCartButton';
 
 const SubscribeScreen = () => {
   const route = useRoute();
@@ -82,7 +82,7 @@ const BuildSubscriptionView = () => {
       <Text style={[text.title, {marginBottom: 8}]}>
         Build your subscription
       </Text>
-      <CounterView title="Total deliveries" value={1} />
+      <CounterView title="Total deliveries" value={30} />
       <CounterView title="Quantity per delivery" value={1} />
       <SubscriptionIntervalView title="Start Date" buttonTitle="28/07/2023" />
       <SubscriptionIntervalView
@@ -98,34 +98,9 @@ const CounterView = (props: {title: string; value: number}) => {
     <View style={styles.titleRow}>
       <Text style={styles.title}>{props.title}</Text>
       <View style={styles.counterContainer}>
-        <ItemCounterButton />
+        <ItemCounterButton value={props.value}/>
       </View>
     </View>
-  );
-};
-const ItemCounterButton = () => {
-  const maxLimit: number = 30;
-  const [count, setCount] = useState(0);
-
-  const updateCounterValueBy = (value: number) => {
-    if (value == 1 && count == maxLimit) {
-      return;
-    }
-    if (value == -1 && count == 0) {
-      return;
-    }
-    setCount(count + value);
-  };
-  return (
-    <ItemCounter
-      value={count}
-      onDecrease={() => {
-        updateCounterValueBy(-1);
-      }}
-      onIncrease={() => {
-        updateCounterValueBy(1);
-      }}
-    />
   );
 };
 const SubscriptionIntervalView = (props: {

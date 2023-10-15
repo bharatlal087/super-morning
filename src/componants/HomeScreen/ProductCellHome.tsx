@@ -3,6 +3,7 @@ import React from 'react';
 import {Color} from '../../constants/Colors';
 import {text} from '../../constants/AppStyle';
 import AddCartSmallButton from '../AddCartSmallButton';
+import AddToCartButton from '../AddToCartButton';
 
 interface ProductProps {
   data: ProductData;
@@ -59,7 +60,9 @@ const ProductCellHome = (props: ProductProps) => {
       </TouchableOpacity>
       {props.data.isAvailable ? (
         <View style={styles.available}>
-          <AddCartSmallButton />
+          <View style={{height: 24, width: 82, marginRight: 10}}>
+            <AddToCartButton title="ADD" />
+          </View>
           <TouchableOpacity onPress={() => {props.onSubscribe(props.data)}} style={styles.calendar}>
             <Image
               source={require('../../../assets/images/calendar.badge.plus.png')}
